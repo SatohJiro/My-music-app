@@ -1,0 +1,273 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(105, 96, 96, 0.253);
+}
+.wrapper {
+  max-width: 50rem;
+  height: 64rem;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 2rem;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 1.4rem auto 0;
+  position: relative;
+  animation: showForm ease 0.45s;
+}
+
+.form {
+  &__container {
+    overflow: hidden;
+  }
+  &__title {
+    display: flex;
+    width: 200%;
+    color: #222;
+    margin: 2rem 0 2.4rem 0;
+  }
+  &__inner {
+    display: flex;
+    width: 200%;
+  }
+  &__login,
+  &__signup {
+    color: #222;
+    width: 50%;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  & span,
+  a,
+  label {
+    font-size: 1.4rem;
+  }
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__box-item {
+    width: calc(100% / 2 - 1rem);
+    color: #222;
+  }
+}
+.title {
+  &__signup,
+  &__login {
+    width: 50%;
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 600;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+.field {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  &__gender {
+    display: flex;
+  }
+  &__gender div {
+    width: 50%;
+    display: flex;
+  }
+  &.invalid {
+    & .error__message {
+      color: red;
+    }
+    & > input {
+      border-color: rgb(231, 50, 50) red;
+    }
+  }
+}
+
+.field input {
+  padding: 1.5rem 1rem;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  &:focus {
+    border-color: $primary-bg;
+  }
+}
+.form .field input[type="submit"] {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2rem;
+  cursor: pointer;
+
+  background: linear-gradient(to right, $primary-bg, $purple-primary);
+  border: none;
+  outline: none;
+}
+.form .field input[type="file"] {
+  display: none;
+}
+.custom__file {
+  background: linear-gradient(to right, $primary-bg, $purple-primary);
+
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.forgot__pasword,
+.signup_link {
+  margin-top: 0.8rem;
+}
+.signup__link {
+  margin-top: 3rem;
+  text-align: center;
+}
+.forgot__pasword a,
+.signup__link a {
+  color: $primary-bg;
+  transition: all 0.25s ease-out;
+}
+.forgot__pasword a:hover,
+.signup__link a:hover {
+  text-decoration: underline;
+}
+#checked__signup:checked ~ .slide__tab {
+  left: 50%;
+}
+#checked__signup:checked ~ .slide__login {
+  color: #222;
+}
+#checked__signup:checked ~ .slide__signup {
+  color: #fff;
+}
+#checked__login,
+#checked__signup {
+  display: none;
+}
+.slide {
+  &__controls {
+    display: flex;
+    justify-content: space-evenly;
+    height: 4.5rem;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    position: relative;
+  }
+  &__login,
+  &__signup {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1;
+    color: #fff;
+    transition: all 0.4s ease;
+  }
+  &__signup {
+    color: #222;
+  }
+  &__tab {
+    position: absolute;
+    border-radius: 5px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to right, $primary-bg, $purple-primary);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+.file {
+  &__container {
+    margin-top: 1rem;
+    height: 10rem;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__wrapper {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 1rem;
+    border: 1px dashed #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  &__wrapper.active:hover .btn__cancel {
+    color: #fff;
+    display: block;
+  }
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  &__image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  &__icon {
+    text-align: center;
+  }
+  &__icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+  &__text {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  &__name {
+    display: none;
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 0.4rem;
+    background: linear-gradient(to right, $primary-bg, $purple-primary);
+    color: #fff;
+    font-size: 1.4rem;
+  }
+  &__wrapper.active:hover &__name {
+    display: block;
+  }
+  &__btn.btn__cancel {
+    display: none;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    cursor: pointer;
+    & svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  &__btn.btn__cancel:hover {
+    & svg {
+      color: $primary-bg;
+    }
+  }
+}
+#btn__custom {
+  margin: 1rem 2rem;
+  height: 4rem;
+  border: 1px solid #ddd;
+  padding: 0.4rem;
+}
+@keyframes showForm {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-110%));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

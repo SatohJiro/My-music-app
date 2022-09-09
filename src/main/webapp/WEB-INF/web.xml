@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+
+
+	<filter>
+		<filter-name>ImageFilter</filter-name>
+		<filter-class>filter.ImageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ImageFilter</filter-name>
+		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>RegisterFilter</filter-name>
+		<filter-class>filter.RegisterFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RegisterFilter</filter-name>
+		<url-pattern>/RegisterServlet</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>RoleFilter</filter-name>
+		<filter-class>filter.RoleFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RoleFilter</filter-name>
+		<url-pattern>/songs.jsp</url-pattern>
+		<url-pattern>/users.jsp</url-pattern>
+		<url-pattern>/profile.jsp</url-pattern>
+		<url-pattern>/editSong.jsp</url-pattern>
+		<url-pattern>/editUser.jsp</url-pattern>
+	</filter-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

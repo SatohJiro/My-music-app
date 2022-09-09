@@ -1,0 +1,382 @@
+.playlist {
+    &__header {
+        display: flex;
+        padding: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $text-secondary;
+    }
+    &__header-title {
+        width: 50%;
+        padding-left: 2.4rem;
+    }
+    &__header-time {
+        width: 50%;
+    }
+    &__song-info {
+        position: relative;
+    }
+    &__song-info>i {
+        font-size: 1.4rem;
+        color: $text-secondary;
+    }
+    &__song-check {
+        position: relative;
+        display: none;
+    }
+    &__song-check label:before {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 3px;
+        background: transparent;
+        top: 3px;
+        left: 1px;
+        border: 2px solid #fcfff4;
+        border-top: none;
+        border-right: none;
+        transform: rotate(-45deg);
+    }
+    &__song-check input[type="checkbox"]:checked+label:before {
+        filter: alpha(opacity=100);
+        opacity: 1;
+    }
+    &__song-check input {
+        display: none;
+    }
+    &__song-check label {
+        cursor: pointer;
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        top: -7px;
+        right: -14px;
+        border-radius: 3px;
+        border: 1px solid $text-secondary;
+        box-shadow: inset 0px 1px 1px rgb(0 0 0 / 50%), 0px 1px 0px rgb(255 255 255 / 40%);
+        background: transparent;
+    }
+    &__list {
+        overflow: hidden overlay;
+        scroll-behavior: smooth;
+    }
+    &__list:hover::-webkit-scrollbar {
+        width: 0.4rem;
+        display: block;
+    }
+    &__list::-webkit-scrollbar {
+        cursor: pointer;
+        display: none;
+    }
+    &__list::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &__list::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #888;
+    }
+    &__list-song {
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.25s linear;
+    }
+    &__list-song:hover,
+    &__list-song.active {
+        transition: all 0.25s linear;
+        background-color: $bg-content-color;
+    }
+    &__list-song .play-song--actions {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    &__list-song:hover &__song-info>i {
+        visibility: hidden;
+    }
+    &__list-song:hover .play-song--actions,
+    &__list-song:hover &__song-check,
+    &__lost-song.active .play-song-actions {
+        display: block;
+    }
+    &__song-body {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &__song-info {
+        width: 50%;
+    }
+    &__song-title {
+        max-width: 100%;
+        font-size: 1.4rem;
+        text-transform: capitalize;
+    }
+    &__song-title.info__title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+//add playlist
+.playlist__create {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    background-color: rgba(105, 96, 96, 0.253);
+    &.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.create__wrapper {
+    max-width: 32rem;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    overflow: hidden;
+    margin: 1.4rem auto 0;
+    position: relative;
+    animation: showForm ease 0.6s;
+}
+
+.form {
+    &__content {
+        // margin: 2rem;
+        padding: 2rem;
+    }
+    &__box {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        justify-content: space-between;
+    }
+    &__info {
+        text-align: start;
+    }
+}
+
+.btn {
+    &__create {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.4rem;
+        color: #fcfff4;
+        background: $purple-primary;
+        border-radius: 2rem;
+        cursor: pointer;
+    }
+}
+
+.toggle {
+    cursor: pointer;
+    &__input {
+        display: none;
+    }
+    &__input:checked+&__bar {
+        background-color: purple;
+    }
+    &__input:checked+&__bar &__spin {
+        transform: translatex(0.7rem);
+    }
+    &__bar {
+        width: 2.2rem;
+        height: 1.4rem;
+        background-color: $border-box;
+        border-radius: 2rem;
+        padding: 0.2rem;
+        transition: background-color 0.2s linear;
+    }
+    &__spin {
+        height: 1rem;
+        width: 1rem;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: transform 0.25s ease;
+    }
+}
+
+.playlist {
+    &__form {
+        // width: 100%;
+        // max-width: 33rem;
+        // height: 30rem;
+        border-radius: 2rem;
+        background: $primary-bg;
+        text-align: center;
+        position: relative;
+    }
+    &__form .btn__close {
+        color: #fff;
+        font-size: 1.4rem;
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 2rem;
+        text-align: center;
+        color: #fff;
+    }
+    &__scope {
+        font-size: 1.4rem;
+    }
+    &__desc {
+        font-size: 1.2em;
+        color: rgb(194, 182, 182);
+    }
+}
+
+.input {
+    &__name {
+        width: 100%;
+        border-radius: 4rem;
+        padding: 1rem;
+        color: #fff;
+        background-color: $bg-content-color;
+    }
+}
+
+@keyframes showForm {
+    from {
+        opacity: 0;
+        transform: translateY(calc(-110%));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+//
+.playlist {
+    &__container {
+        margin-top: 6rem;
+        padding: 2rem;
+        display: flex;
+        height: 100vh;
+    }
+    &__content {
+        // display: none;
+        padding-top: 6rem;
+    }
+    &__info {
+        width: 30rem;
+        padding: 1.4rem;
+        flex-shrink: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__content {
+        scroll-behavior: smooth;
+        padding: 1.4rem;
+        flex: 1;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &:hover::-webkit-scrollbar {
+            transition: all 0.25s linear;
+            display: block;
+            width: 0.4rem;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 1rem;
+            background-color: #888;
+        }
+        &::-webkit-scrollbar-track {
+            border-radius: 1rem;
+            background-color: transparent;
+        }
+    }
+    &__image {
+        overflow: hidden;
+        border-radius: 10px;
+        width: 30rem;
+        height: 30rem;
+        margin-bottom: 1rem;
+        img {
+            height: 100%;
+        }
+    }
+    &__name span {
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+    &__name i {
+        cursor: pointer;
+        margin-left: 0.2rem;
+    }
+    &__creator,
+    &__scope {
+        color: #c5c7c2;
+        font-size: 1.2rem;
+        margin-top: 0.4rem;
+    }
+    &__creator span {
+        color: #fff;
+    }
+    &__options {
+        color: #fff;
+        background-color: $bg-content-color;
+        padding: 1rem;
+        border-radius: 50%;
+        margin-top: 1rem;
+        font-size: 1.4rem;
+    }
+    &__suggest-song {
+        margin-top: 2rem;
+        width: 100%;
+    }
+    &__suggest-song,
+    &__contain-song {
+        & .container__playlist {
+            width: 100%;
+        }
+    }
+    &__contain-song .container__playlist {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    &__suggest-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        padding-left: 1rem;
+    }
+    &__suggest-header--btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        padding: 0.6rem 1.8rem;
+        background-color: $purple-primary;
+        border-radius: 16px;
+        i {
+            font-size: 1.2rem;
+            margin-right: 0.6rem;
+        }
+    }
+    &__suggest-header--title {
+        h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-bottom: 1rem;
+        }
+        span {
+            font-size: 1.6rem;
+            color: $text-color;
+        }
+    }
+}
